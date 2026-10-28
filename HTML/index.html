@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="fr" class="global">
+    <head>
+        <!-- en tete du document -->
+        <meta charset="UTF-8" />
+        <title>DUNOCQ Louis - Portfolio</title>
+        <link rel="icon" href="/Media/LogoPortfolio.ico" type="image/x-icon">
+        <link href="../CSS/style.css" rel="stylesheet">
+        <script src="../JavaScript/script.js" defer></script>
+        <!-- pour pouvoir utiliser les icons de Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    </head>
+    
+    <body>
+
+        <header>
+            <nav class="enTete">
+                <a class="logo" href="#accueil">L.D</a>
+
+                <div class="navigation">
+                    <a href="#accueil" data-i18n="accueil">Accueil</a>
+                    <a href="#a-propos" data-i18n="apropos">À propos</a>
+                    <a href="#competences" data-i18n="competences">Compétences</a>
+                    <a href="#projets" data-i18n="projets">Projets</a>
+                    <a href="#contact" data-i18n="contact">Contact</a>
+                </div>
+            </nav>
+        </header>
+
+    
+        <main>
+
+            <!-- ==================== ACCUEIL ==================== -->
+            <section id="accueil">
+                <div class="accueil-contenu">
+                    <p class="accueil-introduction" data-i18n="accueilIntroduction">Bonjour, moi c'est</p>
+
+                    <h1>Louis Dunocq</h1>
+
+                    <h2 data-i18n="h2pt1">Étudiant en BUT Informatique à l'IUT de Lens</h2>
+                    <h2 data-i18n="h2pt2">En recherche d'un stage en développement back-end à partir du 12 avril 2027</h2>
+
+                    <p class="accueil-description" data-i18n="accueilDescription">
+                        Je développe des projets qui me permettent d'explorer de nouvelles
+                        technologies et de donner vie à mes idées. Toujours curieux
+                        d'apprendre, j'aime expérimenter et transformer progressivement mes
+                        idées en réalisations concrètes.
+                    </p>
+
+                    <div class="accueil-boutons">
+                        <a href="#projets" class="bouton bouton-principal" data-i18n="boutonPrincipal">
+                            Découvrir mes projets ↓
+                        </a>
+
+                        <a href="#contact" class="bouton bouton-secondaire" data-i18n="boutonSecondaire">
+                            Me contacter
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+
+            <!-- ==================== À PROPOS ==================== -->
+            <section id="a-propos">
+                <div class="profil-contenu">
+
+                    <p class="section-surtitre" data-i18n="AProposP">Pour en savoir plus</p>
+                    <h2 data-i18n="AProposH2">À propos de</h2>
+
+                    <div class="profil-onglets" role="tablist"
+                        aria-label="Informations sur mon profil">
+
+                        <button class="profil-onglet actif"
+                                id="onglet-moi"
+                                role="tab"
+                                aria-selected="true"
+                                aria-controls="contenu-moi"
+                                data-onglet="moi"
+                                data-i18n="AProposMoi">
+                            Moi
+                        </button>
+
+                        <button class="profil-onglet"
+                                id="onglet-formation"
+                                role="tab"
+                                aria-selected="false"
+                                aria-controls="contenu-formation"
+                                data-onglet="formation"
+                                tabindex="-1"
+                                data-i18n="AProposFormation">
+                            Formation
+                        </button>
+
+                        <button class="profil-onglet"
+                                id="onglet-engagements"
+                                role="tab"
+                                aria-selected="false"
+                                aria-controls="contenu-engagements"
+                                data-onglet="engagements"
+                                tabindex="-1"
+                                data-i18n="AProposExperiences">
+                            Engagements et expériences
+                        </button>
+
+                        <button class="profil-onglet"
+                                id="onglet-certifications"
+                                role="tab"
+                                aria-selected="false"
+                                aria-controls="contenu-certifications"
+                                data-onglet="certifications"
+                                tabindex="-1"
+                                data-i18n="AProposCertifications">
+                            Mes certifications
+                        </button>
+
+                    </div>
+
+                    <!-- Contenu : de moi -->
+                    <div class="profil-panel actif"
+                        id="contenu-moi"
+                        role="tabpanel"
+                        aria-labelledby="onglet-moi">
+
+                        <p data-i18n="MeP1">
+                            Actuellement en deuxième année de BUT Informatique à l’IUT de Lens, je développe mes compétences à travers différents projets personnels qui me permettent d’explorer la programmation et de découvrir de nouvelles technologies.
+                        </p>
+
+                        <p data-i18n="MeP2">
+                            J’aime particulièrement apprendre en expérimentant et donner vie à mes propres idées. Chaque projet est l’occasion pour moi de relever de nouveaux défis, de résoudre des problèmes et de gagner en expérience.
+                        </p>
+
+                        
+
+                    </div>
+
+
+                    <!-- Contenu : Formation -->
+                    <div class="profil-panel"
+                        id="contenu-formation"
+                        role="tabpanel"
+                        aria-labelledby="onglet-formation"
+                        hidden>
+
+                        <article class="parcours-element">
+                            <p class="parcours-date">2025 - 2027</p>
+                            <h3>BUT Informatique</h3>
+                            <p class="parcours-etablissement" data-i18n="parcoursEtablissementIUT">
+                                IUT de Lens
+                            </p>
+                            <p data-i18n="parcoursDescriptionIUT">
+                                Actuellement en deuxième année de BUT Informatique, je développe mes compétences en programmation, en conception logicielle et dans différents domaines de l'informatique, à travers les enseignements de ma formation et la réalisation de projets.
+                            </p>
+                        </article>
+
+                        <article class="parcours-element">
+                            <p class="parcours-date">2022 - 2025</p>
+                            <h3 data-i18n="bacGeneral">Baccalauréat général</h3>
+                            <p class="parcours-etablissement" data-i18n="parcoursEtablissementLycée">
+                                Lycée Albert CHATELET à Douai
+                            </p>
+                            <p data-i18n="parcoursDescriptionIUT">
+                                It was during high school that I first became interested in programming and software development. I chose Computer Science (NSI), which allowed me to learn the fundamentals of programming while also studying mathematics and physics and chemistry.
+                            </p>
+                        </article>
+
+                    </div>
+
+                    <!-- Contenu : Engagements et expériences -->
+                    <div class="profil-panel"
+                        id="contenu-engagements"
+                        role="tabpanel"
+                        aria-labelledby="onglet-engagements"
+                        hidden>
+
+                        <article class="parcours-element">
+                            <p class="parcours-date">2026 - 2027</p>
+                            <h3 data-i18n="EngagementsTitre1">BDE Informatique</h3>
+                            <p data-i18n="EngagementsDescription1">
+                                === Pour ma deuxième année à l'iut, je me suis inscrit en tant que membre du BDE,
+                                depuis, en plus de mes obligations d'étudiant, je participe à l'organisation d'événements...
+                            </p>
+                        </article>
+
+                        <article class="parcours-element">
+                            <p class="parcours-date" data-i18n="EngagementsDuree2">début 2026</p>
+                            <h3 data-i18n="EngagementsTitre2">Journées portes ouvertes</h3>
+                            <p data-i18n="EngagementsDescription2">
+                                Accompagnement de familles lors de visites de
+                                l'établissement et réponses à leurs questions pour
+                                leur faire découvrir l'IUT et sa formation en informatique.
+                            </p>
+                        </article>
+
+                        <article class="parcours-element">
+                            <p class="parcours-date" data-i18n="EngagementsDuree3">7 octobre 2026</p>
+                            <h3 data-i18n="EngagementsTitre3">Animation – Fête de la science</h3>
+                            <p data-i18n="EngagementsDescription3">
+                                Animation d'un stand de découverte de la programmation.
+                                Accueil des participants et accompagnement dans la
+                                réalisation de programmes simples afin de leur faire
+                                découvrir les bases de l'informatique.
+                            </p>
+                        </article>
+
+                        
+
+
+                    </div>
+
+                    <!-- Contenu : Certifications -->
+                    <div class="profil-panel"
+                        id="contenu-certifications"
+                        role="tabpanel"
+                        aria-labelledby="onglet-certifications"
+                        hidden>
+
+                        <article class="certification-carte">
+
+                            <div class="certification-icone">
+                                <i class="fa-solid fa-award" aria-hidden="true"></i>
+                            </div>
+
+                            <div class="certification-infos">
+                                <h3 data-i18n="certificationVoltaireTitre">Certification Voltaire</h3>
+
+                                <p data-i18n="certificationVoltaireDescription">
+                                    Certification attestant de mon niveau en orthographe et en expression écrite.
+                                </p>
+
+                                <p class="certification-score" data-i18n="certificationVoltaireScore">
+                                    Score obtenu : 571 (correspondant au niveau : "orthographe professionnel")
+                                </p>
+
+                                <p class="parcours-date" data-i18n="certificationVoltaireDate">
+                                    Date d'obtention : avril 2026
+                                </p>
+
+                                <a class="certification-lien"
+                                href="https://mon.certificat-voltaire.fr/verification-certificat?code=T99UG6K"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                data-i18n="certificationVoltaireLien">
+                                    Consulter ma certification ↗
+                                </a>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+                <div class="profil-image">
+                    <img src="../Media/testImage.png" alt="Photo de Lou">
+                </div>
+            </section>
+                
+
+                <!-- ==================== COMPÉTENCES ==================== -->
+                <section id="competences">
+                    <div class="competences-contenu">
+
+                        <p class="section-surtitre" data-i18n="competences1">Ce que je sais utiliser</p>
+                        <h2 data-i18n="competences2">Mes compétences</h2>
+
+                        <div class="competences-categorie">
+
+                        <div class="competences-sous-categories">
+
+                            <!-- Langages -->
+                            <div class="competence-groupe">
+                                <h4 data-i18n="competencesSection1">Langages</h4>
+
+                                <div class="competences-cartes">
+
+                                    <div class="competence-carte">
+                                        <i class="fa-brands fa-java"></i>
+                                        <p>Java</p>
+                                    </div>
+
+                                    <div class="competence-carte">
+                                        <i class="fa-brands fa-js"></i>
+                                        <p>JavaScript</p>
+                                    </div>
+
+                                    <div class="competence-carte">
+                                        <i class="fa-brands fa-python"></i>
+                                        <p>Python</p>
+                                    </div>
+
+                                    <div class="competence-carte">
+                                        <i class="fa-brands fa-php"></i>
+                                        <p>PHP</p>
+                                    </div>
+
+                                    <div class="competence-carte">
+                                        <i class="fa-brands fa-html5"></i>
+                                        <p>HTML</p>
+                                    </div>
+
+                                    <div class="competence-carte">
+                                        <i class="fa-brands fa-css3-alt"></i>
+                                        <p>CSS</p>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Environnements de développement -->
+                            <div class="competence-groupe">
+                                <h4 data-i18n="competencesSection2">Environnements de développement</h4>
+
+                                <div class="competences-cartes">
+
+                                    <div class="competence-carte">
+                                        <img src="../Media/Icon Logo/Idea.png" alt="Logo Idea" class="logo"/>
+                                        <p>IntelliJ IDEA</p>
+                                    </div>
+
+                                    <div class="competence-carte">
+                                        <img src="../Media/Icon Logo/PhpStorm.png" alt="Logo PhpStorm" class="logo"/>
+                                        <p>PhpStorm</p>
+                                    </div>
+
+                                    <div class="competence-carte">
+                                        <img src="../Media/Icon Logo/PyCharm.png" alt="Logo PyCharm" class="logo"/>
+                                        <p>PyCharm</p>
+                                    </div>
+
+                                    <div class="competence-carte">
+                                        <img src="../Media/Icon Logo/VScode.png" alt="Logo VS code" class="logo"/>
+                                        <p>VS code</p>
+                                    </div>
+
+                                    <div class="competence-carte">
+                                        <img src="../Media/Icon Logo/eclipse.png" alt="Logo eclipse" class="logo"/>
+                                        <p>Eclipse</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="competences-sous-categories">
+
+                            <!-- Bases de données -->
+                            <div class="competence-groupe">
+                                <h4 data-i18n="competencesSection3">Bases de données</h4>
+
+                                <div class="competences-cartes">
+
+                                    <div class="competence-carte">
+                                        <i class="fa-solid fa-database"></i>
+                                        <p>SQL</p>
+                                    </div>
+
+                                    <div class="competence-carte">
+                                        <i class="fa-solid fa-server"></i>
+                                        <p>PostgreSQL</p>
+                                    </div>
+                                </div>
+                            </div>                        
+
+                            <!-- Bureautique et Sytèmes d'exploitation -->
+                            <div class="competence-groupe">
+                                <h4 data-i18n="competencesSection4">Bureautique et Sytèmes d'exploitation</h4>
+
+                                <div class="competences-cartes">
+
+                                    <div class="competence-carte">
+                                        <i class="fa-solid fa-file-word"></i>
+                                        <p>Word</p>
+                                    </div>
+
+                                    <div class="competence-carte">
+                                        <i class="fa-solid fa-file-excel"></i>
+                                        <p>Excel</p>
+                                    </div>
+
+                                    <div class="competence-carte">
+                                        <i class="fa-regular fa-file-powerpoint"></i>
+                                        <p>PowerPoint</p>
+                                    </div>
+
+                                    <div class="competence-carte">
+                                        <i class="fa-brands fa-windows"></i>
+                                        <p>Windows</p>
+                                    </div>
+
+                                    <div class="competence-carte">
+                                        <i class="fa-brands fa-linux"></i>
+                                        <p>Linux</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+                
+
+            <!-- ==================== PROJETS ==================== -->
+            <section id="projets">
+                <div class="projets-contenu">
+
+                    <p class="section-surtitre" data-i18n="projets1">Ce que j'ai réalisé</p>
+                    <h2 data-i18n="projets2">Mes projets</h2>
+
+                    <!-- Onglets des projets -->
+                    <div class="projets-onglets" role="tablist"
+                        aria-label="Catégories de projets">
+
+                        <button class="projets-onglet actif"
+                                id="onglet-projets-perso"
+                                role="tab"
+                                aria-selected="true"
+                                aria-controls="contenu-projets-perso"
+                                data-categorie-projet="perso"
+                                data-i18n="ongletPP">
+                            Projets personnels
+                        </button>
+
+                        <button class="projets-onglet"
+                                id="onglet-projets-scolaires"
+                                role="tab"
+                                aria-selected="false"
+                                aria-controls="contenu-projets-scolaires"
+                                data-categorie-projet="scolaires"
+                                tabindex="-1"
+                                data-i18n="ongletPS">
+                            Projets scolaires
+                        </button>
+
+                    </div>
+
+                    <!-- ==================== PROJETS PERSONNELS ==================== -->
+                    <div class="projets-panel actif"
+                        id="contenu-projets-perso"
+                        role="tabpanel"
+                        aria-labelledby="onglet-projets-perso">
+
+                        <div class="projets-cartes">
+
+                            <!-- VocalStream -->
+                            <article class="projet-carte">
+                                <img
+                                    src="../Media/ProjetPersonnel/vocalstream.png"
+                                    alt="Aperçu de l'interface de VocalStream"
+                                    class="projet-image"
+                                >
+
+                                <div class="projet-informations">
+                                    <h3>VocalStream</h3>
+
+                                    <p data-i18n="vocalstreamDescription">
+                                        Un lecteur musical développé en Java et JavaFX,
+                                        dédié à l'univers Vocaloid et conçu pour proposer
+                                        une expérience d'écoute personnalisée.
+                                    </p>
+
+                                    <a href="vocalstream.html"
+                                    class="bouton bouton-principal"
+                                    data-i18n="projetsPersoBouton">
+                                        Découvrir le projet →
+                                    </a>
+                                </div>
+                            </article>
+
+                            <!-- Bot Discord -->
+                            <article class="projet-carte">
+                                <img
+                                    src="../Media/ProjetPersonnel/discord.png"
+                                    alt="Aperçu du bot Discord"
+                                    class="projet-image"
+                                >
+
+                                <div class="projet-informations">
+                                    <h3>Bot Discord</h3>
+
+                                    <p data-i18n="botDiscordDescription">
+                                        Un bot développé en JavaScript avec discord.js,
+                                        pour expérimenter les commandes interactives,
+                                        la personnalisation et des fonctionnalités originales.
+                                    </p>
+
+                                    <a href="bot-discord.html"
+                                    class="bouton bouton-principal"
+                                    data-i18n="projetsPersoBouton">
+                                        Découvrir le projet →
+                                    </a>
+                                </div>
+                            </article>
+
+                        </div>
+                    </div>
+
+                    <!-- ==================== PROJETS SCOLAIRES ==================== -->
+                    <div class="projets-panel"
+                        id="contenu-projets-scolaires"
+                        role="tabpanel"
+                        aria-labelledby="onglet-projets-scolaires"
+                        hidden>
+
+                        <div class="projets-scolaires-cartes">
+
+                            <!-- Projet scolaire 1 : exemple à personnaliser -->
+                            <article class="projet-scolaire-carte">
+
+                                <div class="projet-scolaire-icone">
+                                    <i class="fa-solid fa-laptop-code"
+                                    aria-hidden="true"></i>
+                                </div>
+
+                                <div class="projet-scolaire-informations">
+                                    <h3 data-i18n="PStitre1">Fractalens : générateur de fractales</h3>
+
+                                    <p data-i18n="PSdescription1">
+                                        Manipulation des nombres complexes afin de créer de l’art fractal.
+                                    </p>
+
+                                    <p class="projet-scolaire-technologies">
+                                        <strong>Technologies :</strong> Java
+                                    </p>
+
+                                    <a href="https://github.com/AnonymousLou/fractalens"
+                                    class="projet-scolaire-lien"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                        Voir le projet sur GitHub ↗
+                                    </a>
+                                </div>
+
+                            </article>
+
+                            <!-- Projet scolaire -->
+                            <article class="projet-scolaire-carte">
+
+                                <div class="projet-scolaire-icone">
+                                    <i class="fa-solid fa-database"
+                                    aria-hidden="true"></i>
+                                </div>
+
+                                <div class="projet-scolaire-informations">
+                                    <h3 data-i18n="PStitre2">Gestion de base de données</h3>
+
+                                    <p data-i18n="PSdescription2">
+                                        Conception et exploitation d'une base de données
+                                        dans le cadre d'un projet universitaire.
+                                        Description à adapter au travail réalisé.
+                                    </p>
+
+                                    <p class="projet-scolaire-technologies">
+                                        <strong>Technologies :</strong> SQL, PostgreSQL
+                                    </p>
+
+                                    <a href="https://github.com/"
+                                    class="projet-scolaire-lien"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                        Voir le projet sur GitHub ↗
+                                    </a>
+                                </div>
+
+                            </article>
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            
+
+            <section id="contact">
+                <div class="contact-contenu">
+
+                    <p class="section-surtitre" data-i18n="contact1">Restons en contact</p>
+                    <h2 data-i18n="contact2">Un projet ou une opportunité ?</h2>
+
+                    <p class="contact-description" data-i18n="contact3">Vous souhaitez en savoir plus sur mon parcours ou échanger avec moi ?</p>
+                    <p class="contact-description" data-i18n="contact4">Retrouvez mes informations ci-dessous.</p>
+
+                    <div class="contact-cartes">
+
+                        <!-- CV -->
+                        <a href="../Media/CV.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="contact-carte">
+
+                            <i class="fa-solid fa-file-pdf"></i>
+                            <h3 data-i18n="contactCVtitre">Mon CV</h3>
+                            <p data-i18n="contactCVdescription">Consulter mon parcours et mes compétences.</p>
+                            <span data-i18n="contactCVbouton">Voir le CV →</span>
+
+                        </a>
+
+                        <!-- GitHub -->
+                        <a href="https://github.com/AnonymousLou"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="contact-carte">
+
+                            <i class="fa-brands fa-github"></i>
+                            <h3>GitHub</h3>
+                            <p data-i18n="contactGithubDescription">Découvrir mes projets et mon code source.</p>
+                            <span data-i18n="contactGithubBouton">Voir mon profil →</span>
+
+                        </a>
+
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/louis-dunocq"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="contact-carte">
+
+                            <i class="fa-brands fa-linkedin"></i>
+                            <h3>LinkedIn</h3>
+                            <p data-i18n="contactLinkedinDescription">Consulter mon profil professionnel.</p>
+                            <span data-i18n="contactLinkedinBouton">Voir mon profil →</span>
+
+                        </a>
+
+                        <!-- E-mail -->
+                        <a href="mailto:loudun2407@gmail.com"
+                        class="contact-carte">
+
+                            <i class="fa-solid fa-envelope"></i>
+                            <h3 data-i18n="contactMailTitre">Me contacter</h3>
+                            <p data-i18n="contactMailDescription">Échanger directement par e-mail.</p>
+                            <span data-i18n="contactMailBouton">M'envoyer un e-mail →</span>
+
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+
+
+        <footer class="pied-page">
+
+            <a href="#accueil" class="pied-page-logo">L.D</a>
+
+            <nav class="pied-page-navigation" aria-label="Navigation de pied de page">
+                <a href="#accueil" data-i18n="accueil">Accueil</a>
+                <a href="#projets" data-i18n="projets">Projets</a>
+                <a href="#contact" data-i18n="contact">Contact</a>
+            </nav>
+
+            <p>© 2026 Louis DUNOCQ — All rights reserved</p>
+
+        </footer>
+
+        <!-- Bouton de changement de langue -->
+        <div class="boutons-flottants">
+            <button id="bouton-langue" type="button" aria-label="Changer de langue">
+                FR
+            </button>
+
+            <!-- Bouton de changement de thème -->
+            <button id="bouton-theme" type="button" aria-label="Activer le mode clair">
+                <i class="fa-solid fa-moon" aria-hidden="true"></i>
+            </button>
+        </div>
+
+    </body>
+
+    
+</html>
+
+
+
+
+
+
+<!-- <h1 class="nomClass"> Lou </h1>  
+ 
+
+
+
+        <h1 id="title"> Titre </h1>
+        <p><span class="span">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non ad, aperiam incidunt impedit optio laudantium repellendus sed dicta hic est totam obcaecati similique expedita officia commodi porro error ut assumenda.
+        </span></p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quod, quasi tenetur odio explicabo quam alias eligendi numquam nisi quia, recusandae illo, magni inventore at laudantium ut optio possimus eum.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur quaerat nemo ut quisquam molestias accusantium consequatur quasi ullam, sequi, perferendis dolor illum eveniet a. Odit, dolores repudiandae. Praesentium, perferendis non.
+        </p>
+        <ol>
+            <li class="ol>li">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias velit, qui sed ipsam illum consequatur officia dolore iste sit molestias magnam facilis porro id nam est dolorem sequi vitae dolor.</li>
+        </ol>
+        <li class="ol li">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque beatae optio cum quas quidem explicabo expedita laboriosam, a consequuntur sint ipsa eligendi dicta dolorem quibusdam voluptas delectus facere veritatis? Iste!
+        </li>
+
+
+
+
+
+
+-->

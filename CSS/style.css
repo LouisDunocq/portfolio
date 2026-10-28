@@ -1,0 +1,1160 @@
+/* ===== Initialisation variable ===== */
+/* ===== Initialisation des couleurs ===== */
+
+:root {
+    --couleur-principale: #000000;
+    --couleur-secondaire: #5a949b;
+    --couleur-secondaire-claire: #70b8c0;
+    --couleur-texte: #ffffff;
+    --couleur-texte-secondaire: #c5c5c5;
+    --couleur-carte: #0b0b0b;
+    --couleur-bordure: #252525;
+}
+
+/* ===== Palette du mode clair ===== */
+
+body.mode-clair {
+    --couleur-principale: #f4f6f7;
+    --couleur-secondaire: #397780;
+    --couleur-secondaire-claire: #316a72;
+    --couleur-texte: #202629;
+    --couleur-texte-secondaire: #535f63;
+    --couleur-carte: #ffffff;
+    --couleur-bordure: #d9e0e2;
+}
+
+
+
+body {
+    background-color: var(--couleur-principale);
+    background-image: url("../Media/fond-geometrique.png");
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 100% auto;
+    background-attachment: fixed;
+}
+
+/* ===== Général ===== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-color: var(--couleur-principale);
+    color: var(--couleur-texte);
+    text-align: center;
+    transition: background-color 0.25s, color 0.25s;
+}
+
+
+/* ===== Navigation ===== */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.enTete {
+    display: flex;
+    justify-content: space-between;  /* sépare les éléments */
+    align-items: center;
+
+    padding: 15px 40px;
+    box-sizing: border-box;
+
+    background-color: var(--couleur-secondaire);
+}
+
+section {
+    scroll-margin-top: 80px;
+}
+
+
+/* Logo */
+
+.logo {
+    color: var(--couleur-texte);
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+/* Liens */
+
+.navigation {
+    display: flex;
+    gap: 30px;
+}
+
+.navigation a {
+    color: var(--couleur-texte);
+    text-decoration: none;
+}
+
+.navigation a:hover {
+    text-decoration: underline;
+}
+
+/* ===== Accueil ===== */
+
+#accueil {
+    min-height: 100vh;  /* pour que l'accueil prenne toute la page */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 100px 40px 60px;
+    box-sizing: border-box;
+}
+
+.accueil-contenu {
+    max-width: 850px;
+}
+
+.accueil-introduction {
+    margin: 0 0 10px;
+
+    font-size: 18px;
+    color: #8f9aa3;
+}
+
+.accueil-contenu h1 {
+    margin: 0;
+
+    font-size: 72px;
+    line-height: 1;
+}
+
+.accueil-contenu h2 {
+    margin: 20px 0;
+
+    font-size: 24px;
+    font-weight: normal;
+    color: var(--couleur-secondaire);
+}
+
+.accueil-description {
+    max-width: 700px;
+    margin: 0 auto;
+
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--couleur-texte-secondaire);
+}
+
+.accueil-boutons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+
+    margin-top: 35px;
+}
+
+.bouton {
+    padding: 13px 24px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.bouton-principal {
+    background-color: var(--couleur-secondaire);
+    color: var(--couleur-texte);
+}
+
+.bouton-principal:hover {
+    background-color: var(--couleur-secondaire-claire);
+    transform: translateY(-2px);
+}
+
+.bouton-secondaire {
+    border: 1px solid var(--couleur-secondaire);
+    color: var(--couleur-texte);
+}
+
+.bouton-secondaire:hover {
+    background-color: var(--couleur-secondaire);
+    transform: translateY(-2px);
+}
+
+
+
+/* ===== À propos ===== */
+
+#a-propos {
+    position: relative;
+    min-height: 80vh;
+    padding: 100px 40px;
+    box-sizing: border-box;
+    scroll-margin-top: 80px;
+}
+
+/*
+   Le conteneur complet reste centré dans la page.
+   La photo est positionnée indépendamment pour qu'elle ne décale
+   jamais le titre ni les onglets.
+*/
+.profil-contenu {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+#a-propos .section-surtitre,
+#a-propos .profil-contenu > h2 {
+    text-align: center;
+}
+
+.section-surtitre {
+    margin: 0 0 10px;
+    color: var(--couleur-secondaire);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.profil-contenu h2 {
+    margin: 0 0 30px;
+    font-size: 40px;
+}
+
+.profil-contenu p:not(.section-surtitre) {
+    color: var(--couleur-texte-secondaire);
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* Photo du profil : affichée uniquement dans l'onglet « Moi » */
+.profil-image {
+    position: absolute;
+    top: 50%;
+    right: max(40px, calc((100% - 1000px) / 2));
+    transform: translateY(-10%);
+}
+
+.profil-image img {
+    display: block;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.profil-image[hidden],
+.profil-panel[hidden] {
+    display: none !important;
+}
+
+/* Onglets */
+.profil-onglets {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin: 35px 0 25px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--couleur-bordure);
+}
+
+.profil-onglet {
+    position: relative;
+    padding: 0 0 12px;
+    border: none;
+    background: transparent;
+    color: var(--couleur-texte);
+    font: inherit;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.profil-onglet:hover,
+.profil-onglet.actif {
+    color: var(--couleur-secondaire);
+}
+
+.profil-onglet.actif::after {
+    content: "";
+    position: absolute;
+    bottom: -13px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--couleur-secondaire);
+}
+
+.profil-onglet:focus-visible {
+    outline: 2px solid var(--couleur-secondaire);
+    outline-offset: 5px;
+}
+
+/* Panneaux des onglets */
+.profil-panel {
+    min-height: 300px;
+    animation: apparition-onglet 0.2s ease;
+}
+
+/* Dans « Moi », on réserve la place de la photo au texte.
+   Les titres et onglets restent centrés sur toute la section. */
+#a-propos:not(.sans-photo) #contenu-moi {
+    max-width: calc(100% - 360px);
+}
+
+/* Les autres onglets utilisent toute la largeur disponible. */
+#a-propos.sans-photo #contenu-formation,
+#a-propos.sans-photo #contenu-engagements,
+#a-propos.sans-photo #contenu-certifications {
+    max-width: 100%;
+    margin-inline: auto;
+}
+
+@keyframes apparition-onglet {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ===== Éléments du parcours ===== */
+
+.parcours-element {
+    margin-bottom: 28px;
+}
+
+.parcours-element h3,
+.certification-infos h3 {
+    margin: 0 0 8px;
+    font-size: 22px;
+}
+
+.parcours-element p:not(.parcours-date) {
+    margin: 8px 0 0;
+
+    color: var(--couleur-texte-secondaire);
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.parcours-date {
+    margin: 0 0 6px;
+
+    color: #5a949b;
+    font-size: 14px;
+}
+
+.parcours-etablissement {
+    color: #aeb8bd;
+    font-size: 15px;
+}
+
+/* ===== Certification ===== */
+
+.certification-carte {
+    display: flex;
+    align-items: flex-start;
+    gap: 22px;
+
+    padding: 25px;
+
+    background-color: var(--couleur-carte);
+    border: 1px solid #252525;
+    border-radius: 12px;
+}
+
+.certification-icone {
+    flex-shrink: 0;
+
+    color: #5a949b;
+    font-size: 42px;
+}
+
+.certification-infos {
+    flex: 1;
+}
+
+.certification-infos p {
+    color: #c5c5c5;
+    line-height: 1.7;
+}
+
+.certification-score strong {
+    color: #5a949b;
+}
+
+.certification-lien {
+    display: inline-block;
+    margin-top: 10px;
+
+    color: #5a949b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.certification-lien:hover {
+    text-decoration: underline;
+}
+
+
+/* ===== Contenu des onglets ===== */
+
+.profil-panneau {
+    animation: apparition-onglet 0.2s ease;
+}
+
+.profil-panneau[hidden] {
+    display: none;
+}
+
+.profil-panneau p {
+    color: var(--couleur-texte-secondaire);
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.profil-panneau h3 {
+    color: var(--couleur-texte);
+    margin-top: 0;
+}
+
+@keyframes apparition-onglet {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/* ===== Compétences ===== */
+
+#competences {
+    min-height: 80vh;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 100px 40px;
+    box-sizing: border-box;
+}
+
+.competences-contenu {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.competences-contenu > .section-surtitre {
+    margin-bottom: 10px;
+}
+
+.competences-contenu h2 {
+    margin: 0 0 50px;
+
+    font-size: 40px;
+}
+
+.competences-contenu h3 {
+    margin: 0 0 25px;
+
+    font-size: 28px;
+}
+
+.competences-contenu h4 {
+    margin: 0 0 20px;
+
+    color: #aeb8bd;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+
+/* ===== Organisation des compétences ===== */
+
+.competences-sous-categories {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    align-items: start;
+
+    margin-bottom: 25px;
+}
+
+.competence-groupe {
+    padding: 25px;
+
+    background-color: var(--couleur-carte);
+    border: 1px solid var(--couleur-bordure);
+    border-radius: 12px;
+
+    min-width: 0;
+}
+
+.competence-groupe h4 {
+    margin: 0 0 20px;
+    color: #aeb8bd;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+/* Cartes plus compactes à l'intérieur des groupes */
+
+.competence-groupe .competences-cartes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.competence-groupe .competence-carte {
+    min-height: 110px;
+}
+
+.competence-groupe .competence-carte i {
+    font-size: 40px;
+}
+
+.competence-groupe .competence-carte p {
+    font-size: 15px;
+}
+
+
+/* ===== Cartes de compétences ===== */
+
+.competences-cartes {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.competence-carte {
+    min-height: 150px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--couleur-carte);
+
+    border: 1px solid var(--couleur-bordure);
+    border-radius: 12px;
+
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.competence-carte:hover {
+    transform: translateY(-5px);
+
+    border-color: var(--couleur-secondaire);
+}
+
+.competence-carte i {
+    font-size: 50px;
+}
+
+.competence-carte:hover i { /* avec le i, ça veut dire "Quand A est survolé, applique ceci à B." (merci l'ia) */
+    color: var(--couleur-secondaire);
+}
+
+
+.competence-carte p {
+    margin: 15px 0 0;
+
+    font-size: 17px;
+}
+
+.logo {
+    height: 50px;
+    width: 50px;
+}
+
+
+
+/* ===== Projets ===== */
+
+#projets {
+    padding: 100px 40px;
+    box-sizing: border-box;
+}
+
+.projets-contenu {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.projets-contenu h2 {
+    margin: 0 0 50px;
+    font-size: 40px;
+}
+
+.projets-cartes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+    align-items: stretch;
+}
+
+.projet-carte {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    background-color: var(--couleur-carte);
+    border: 1px solid var(--couleur-bordure);
+    border-radius: 12px;
+
+    text-align: left;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.projet-carte:hover {
+    transform: translateY(-5px);
+    border-color: var(--couleur-secondaire);
+}
+
+.projet-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.projet-informations {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+
+    padding: 25px;
+}
+
+.projet-informations h3 {
+    margin: 0 0 15px;
+    font-size: 26px;
+}
+
+.projet-informations p {
+    margin: 0 0 25px;
+
+    color: var(--couleur-texte-secondaire);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.projet-informations .bouton {
+    margin-top: auto; /* place le bouton en bas */
+}
+
+/* ===== Onglets des projets ===== */
+
+.projets-onglets {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+
+    margin: 35px 0 30px;
+    padding-bottom: 12px;
+
+    border-bottom: 1px solid var(--couleur-bordure);
+}
+
+.projets-onglet {
+    position: relative;
+
+    padding: 0 0 12px;
+    border: none;
+    background: transparent;
+
+    color: var(--couleur-texte);
+    font: inherit;
+    font-size: 18px;
+
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.projets-onglet:hover,
+.projets-onglet.actif {
+    color: var(--couleur-secondaire);
+}
+
+.projets-onglet.actif::after {
+    content: "";
+
+    position: absolute;
+    bottom: -13px;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background-color: var(--couleur-secondaire);
+}
+
+.projets-onglet:focus-visible {
+    outline: 2px solid var(--couleur-secondaire);
+    outline-offset: 5px;
+}
+
+
+/* ===== Panneaux des projets ===== */
+
+.projets-panel[hidden] {
+    display: none !important;
+}
+
+.projets-panel.actif {
+    animation: apparition-projet 0.2s ease;
+}
+
+@keyframes apparition-projet {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ===== Cartes des projets scolaires ===== */
+
+.projets-scolaires-cartes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    align-items: stretch;
+}
+
+.projet-scolaire-carte {
+    display: flex;
+    align-items: flex-start;
+    gap: 22px;
+
+    padding: 25px;
+
+    background-color: var(--couleur-carte);
+    border: 1px solid var(--couleur-bordure);
+    border-radius: 12px;
+
+    text-align: left;
+
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.projet-scolaire-carte:hover {
+    transform: translateY(-4px);
+    border-color: var(--couleur-secondaire);
+}
+
+.projet-scolaire-icone {
+    flex-shrink: 0;
+
+    color: var(--couleur-secondaire);
+    font-size: 38px;
+}
+
+.projet-scolaire-informations {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    min-width: 0;
+}
+
+.projet-scolaire-informations h3 {
+    margin: 0 0 12px;
+    font-size: 22px;
+}
+
+.projet-scolaire-informations p {
+    margin: 0 0 15px;
+
+    color: var(--couleur-texte-secondaire);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.projet-scolaire-informations .projet-scolaire-technologies {
+    margin-top: auto;
+    padding-top: 5px;
+}
+
+.projet-scolaire-technologies strong {
+    color: var(--couleur-texte);
+}
+
+.projet-scolaire-lien {
+    display: inline-block;
+    margin-top: 10px;
+
+    color: var(--couleur-secondaire-claire);
+    font-weight: bold;
+    text-decoration: none;
+
+    transition: color 0.2s;
+}
+
+.projet-scolaire-lien:hover {
+    color: var(--couleur-texte);
+    text-decoration: underline;
+}
+
+
+/* ===== Adaptation des projets aux écrans plus petits ===== */
+
+@media (max-width: 900px) {
+    .projets-scolaires-cartes {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+    .projets-onglets {
+        gap: 18px;
+    }
+
+    .projets-onglet {
+        font-size: 16px;
+    }
+
+    .projet-scolaire-carte {
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .projet-scolaire-icone {
+        font-size: 30px;
+    }
+}
+
+
+/* ===== Contact ===== */
+
+#contact {
+    padding: 100px 40px;
+    box-sizing: border-box;
+}
+
+.contact-contenu {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.contact-contenu h2 {
+    margin: 0 0 20px;
+    font-size: 40px;
+}
+
+.contact-description {
+    max-width: 650px;
+    margin: 0 auto 45px;
+
+    color: var(--couleur-texte-secondaire);
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.contact-cartes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.contact-carte {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 30px 25px;
+
+    background-color: var(--couleur-carte);
+    border: 1px solid var(--couleur-bordure);
+    border-radius: 12px;
+
+    color: var(--couleur-texte);
+    text-align: center;
+    text-decoration: none;
+
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.contact-carte:hover {
+    transform: translateY(-5px);
+    border-color: var(--couleur-secondaire);
+}
+
+.contact-carte i {
+    margin-bottom: 15px;
+    font-size: 40px;
+    color: var(--couleur-texte);
+
+    transition: color 0.2s;
+}
+
+.contact-carte:hover i {
+    color: var(--couleur-secondaire-claire);
+}
+
+.contact-carte h3 {
+    margin: 0 0 12px;
+    font-size: 23px;
+}
+
+.contact-carte p {
+    margin: 0 0 20px;
+
+    color: var(--couleur-texte-secondaire);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.contact-carte span {
+    margin-top: auto;
+    color: var(--couleur-secondaire-claire);
+    font-weight: bold;
+}
+
+/* ===== Pied de page ===== */
+
+.pied-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    padding: 30px 20px;
+
+    background-color: var(--couleur-carte);
+    border-top: 1px solid var(--couleur-bordure);
+
+    text-align: center;
+}
+
+.pied-page-logo {
+    color: var(--couleur-secondaire);
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.pied-page-navigation {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.pied-page-navigation a {
+    color: var(--couleur-texte-secondaire);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.pied-page-navigation a:hover {
+    color: var(--couleur-secondaire-claire);
+}
+
+.pied-page p {
+    margin: 0;
+    color: var(--couleur-texte-secondaire);
+    font-size: 14px;
+}
+
+/* ===== Adaptation aux écrans plus petits ===== */
+
+@media (max-width: 900px) {
+    #a-propos {
+        padding-inline: 25px;
+    }
+
+    .profil-image {
+        right: 25px;
+    }
+
+    .profil-image img {
+        width: 230px;
+        height: 230px;
+    }
+
+    #a-propos:not(.sans-photo) #contenu-moi {
+        max-width: calc(100% - 270px);
+    }
+
+    .competences-sous-categories,
+    .projets-cartes {
+        grid-template-columns: 1fr;
+    }
+
+    .competence-groupe .competences-cartes {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 650px) {
+    .enTete {
+        padding: 12px 18px;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .navigation {
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    #accueil,
+    #a-propos,
+    #competences,
+    #projets,
+    #contact {
+        padding: 90px 20px 60px;
+    }
+
+    .accueil-contenu h1 {
+        font-size: clamp(42px, 12vw, 64px);
+    }
+
+    .profil-image {
+        position: static;
+        transform: none;
+        margin: 25px auto 0;
+        text-align: center;
+    }
+
+    .profil-image img {
+        width: min(250px, 80vw);
+        height: min(250px, 80vw);
+        margin-inline: auto;
+    }
+
+    #a-propos:not(.sans-photo) #contenu-moi {
+        max-width: 100%;
+    }
+
+    .profil-onglets {
+        gap: 16px;
+    }
+
+    .profil-onglet {
+        font-size: 16px;
+    }
+
+    .profil-contenu h2,
+    .competences-contenu h2,
+    .projets-contenu h2,
+    .contact-contenu h2 {
+        font-size: 32px;
+    }
+
+    .competences-sous-categories,
+    .contact-cartes {
+        grid-template-columns: 1fr;
+    }
+
+    .competence-groupe .competences-cartes,
+    .competences-cartes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .certification-carte {
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .pied-page-navigation {
+        gap: 16px;
+    }
+}
+
+
+/* ===== Boutons flottants : langue et thème ===== */
+
+.boutons-flottants {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.boutons-flottants button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 48px;
+    height: 48px;
+    padding: 0 14px;
+
+    background-color: var(--couleur-carte);
+    color: var(--couleur-texte);
+
+    border: 1px solid var(--couleur-bordure);
+    border-radius: 12px;
+
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+
+    box-shadow: 0 3px 10px rgb(0 0 0 / 15%);
+    transition: background-color 0.25s, color 0.25s,
+                border-color 0.25s, transform 0.2s;
+
+    pointer-events: auto;
+}
+
+.boutons-flottants button:hover {
+    border-color: var(--couleur-secondaire);
+    color: var(--couleur-secondaire);
+    transform: translateY(-3px);
+}
+
+.boutons-flottants button:focus-visible {
+    outline: 2px solid var(--couleur-secondaire);
+    outline-offset: 3px;
+}
+
+@media (max-width: 650px) {
+    .boutons-flottants {
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+    }
+
+    .boutons-flottants button {
+        min-width: 44px;
+        height: 44px;
+    }
+}
