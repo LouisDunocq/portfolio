@@ -1,6 +1,6 @@
 /* ===== Initialisation variable ===== */
 /* ===== Initialisation des couleurs ===== */
-
+/*
 :root {
     --couleur-principale: #000000;
     --couleur-secondaire: #5a949b;
@@ -9,10 +9,10 @@
     --couleur-texte-secondaire: #c5c5c5;
     --couleur-carte: #0b0b0b;
     --couleur-bordure: #252525;
-}
+}*/
 
 /* ===== Palette du mode clair ===== */
-
+/*
 body.mode-clair {
     --couleur-principale: #f4f6f7;
     --couleur-secondaire: #397780;
@@ -21,13 +21,44 @@ body.mode-clair {
     --couleur-texte-secondaire: #535f63;
     --couleur-carte: #ffffff;
     --couleur-bordure: #d9e0e2;
+}*/
+
+
+
+
+
+/* ===== Initialisation variable ===== */
+/* ===== Initialisation des couleurs ===== */
+
+:root  {
+    --couleur-principale: #121212;
+    --couleur-secondaire: #A970FF;
+    --couleur-secondaire-claire: #C4A7F5;
+    --couleur-texte: #F2EFF7;
+    --couleur-texte-secondaire: #C5C0CE;
+    --couleur-carte: #19171D;
+    --couleur-bordure: #39313F;
+}
+
+/* ===== Palette du mode clair ===== */
+
+body.mode-clair {
+    --couleur-principale: #F6F3FA;
+    --couleur-secondaire: #7546A8;
+    --couleur-secondaire-claire: #62358F;
+    --couleur-texte: #29232F;
+    --couleur-texte-secondaire: #625A6B;
+    --couleur-carte: #FFFFFF;
+    --couleur-bordure: #DED5E8;
+    background-image: url("../Media/fond-horizontal-blanc.png");
 }
 
 
 
+/* ===== Fond géométrique ===== */
+
 body {
-    background-color: var(--couleur-principale);
-    background-image: url("../Media/fond-geometrique.png");
+    background-image: url("../Media/fond-horizontal-noir.png");
     background-repeat: no-repeat;
     background-position: top center;
     background-size: 100% auto;
@@ -1147,6 +1178,12 @@ section {
 }
 
 @media (max-width: 650px) {
+    body {
+        background-size: auto 100vh;
+        background-position: center top;
+        background-attachment: fixed;
+    }
+    
     .boutons-flottants {
         bottom: 12px;
         left: 12px;
@@ -1156,5 +1193,24 @@ section {
     .boutons-flottants button {
         min-width: 44px;
         height: 44px;
+    }
+}
+
+/* ===== Fond géométrique sur mobile ===== */
+
+@media (max-width: 650px) {
+
+    /* Mode sombre */
+    body {
+        background-image: url("../Media/fond-vertical-noir.png");
+        background-size: 100% auto;
+        background-position: top center;
+        background-attachment: scroll;
+        background-repeat: repeat-y;
+    }
+
+    /* Mode clair */
+    body.mode-clair {
+        background-image: url("../Media/fond-vertical-blanc.png");
     }
 }

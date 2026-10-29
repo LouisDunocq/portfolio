@@ -70,8 +70,8 @@ const traductions = {
         PStitre1 : "Fractalens : générateur de fractales",
         PSdescription1 : "Projet réalisé en groupe de quatre en Java, autour de la manipulation des nombres complexes pour générer des fractales et explorer la création d'art fractal.",
         // projets scolaire
-        PStitre2 : "TestTest",
-        PSdescription2 : "TestTest",
+        PStitre2 : "Application de gestion d'un cabinet médical",
+        PSdescription2 : "Création d'une version simplifié d'un logiciel de gestion destiné à un centre de soin dans le cadre d'une SAE en prmière année.",
 
         // Contact
         contact1 : "Restons en contact",
@@ -161,8 +161,8 @@ const traductions = {
         PStitre1 : "Fractalens: Fractal Generator",
         PSdescription1 : "A group project developed in Java by a team of four, exploring complex numbers to generate fractals and create fractal art.",
         // projets scolaire
-        PStitre2 : "TestTest",
-        PSdescription2 : "TestTest",
+        PStitre2 : "Medical practice management application",
+        PSdescription2 : "Creation of a simplified version of a management software for a care center as part of a SAE in the first year.",
 
         // Contact
         contact1 : "Let's stay in touch",
