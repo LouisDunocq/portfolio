@@ -56,15 +56,36 @@ body.mode-clair {
 
 
 /* ===== Fond géométrique ===== */
+:root {
+    --fond-image: url("../Media/fond-horizontal-noir.png");
+}
+
+body.mode-clair {
+    --fond-image: url("../Media/fond-horizontal-blanc.png");
+}
 
 body {
-    background-image: url("../Media/fond-horizontal-noir.png");
+    background-image: var(--fond-image);
     background-repeat: no-repeat;
     background-position: top center;
     background-size: 100% auto;
     background-attachment: fixed;
 }
 
+@media (orientation: portrait) {
+    :root {
+        --fond-image: url("../Media/fond-vertical-noir.png");
+    }
+
+    body.mode-clair {
+        --fond-image: url("../Media/fond-vertical-blanc.png");
+    }
+
+    body {
+        background-repeat: repeat-y;
+        background-attachment: scroll; /* fixed est mal géré sur iOS */
+    }
+}
 /* ===== Général ===== */
 
 html {
@@ -1176,7 +1197,7 @@ section {
     outline: 2px solid var(--couleur-secondaire);
     outline-offset: 3px;
 }
-
+/*
 @media (max-width: 650px) {
     body {
         background-size: auto 100vh;
@@ -1196,21 +1217,18 @@ section {
     }
 }
 
-/* ===== Fond géométrique sur mobile ===== */
+ ===== Fond géométrique sur mobile ===== 
 
-@media (max-width: 650px) {
-
-    /* Mode sombre */
+@media screen and (max-width: 650px) {
     body {
         background-image: url("../Media/fond-vertical-noir.png");
         background-size: 100% auto;
         background-position: top center;
-        background-attachment: scroll;
         background-repeat: repeat-y;
+        background-attachment: scroll;
     }
 
-    /* Mode clair */
     body.mode-clair {
         background-image: url("../Media/fond-vertical-blanc.png");
     }
-}
+}*/
