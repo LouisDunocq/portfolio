@@ -1,6 +1,6 @@
-/* ===== Initialisation variable ===== */
-/* ===== Initialisation des couleurs ===== */
-/*
+/* ===== Couleurs ===== */
+
+/* Ancienne palette turquoise, gardée au cas où
 :root {
     --couleur-principale: #000000;
     --couleur-secondaire: #5a949b;
@@ -9,39 +9,30 @@
     --couleur-texte-secondaire: #c5c5c5;
     --couleur-carte: #0b0b0b;
     --couleur-bordure: #252525;
-}*/
+}
+*/
 
-/* ===== Palette du mode clair ===== */
-/*
-body.mode-clair {
-    --couleur-principale: #f4f6f7;
-    --couleur-secondaire: #397780;
-    --couleur-secondaire-claire: #316a72;
-    --couleur-texte: #202629;
-    --couleur-texte-secondaire: #535f63;
-    --couleur-carte: #ffffff;
-    --couleur-bordure: #d9e0e2;
-}*/
-
-
-
-
-
-/* ===== Initialisation variable ===== */
-/* ===== Initialisation des couleurs ===== */
-
-:root  {
+/* Palette du mode sombre (par défaut) */
+:root {
     --couleur-principale: #121212;
     --couleur-secondaire: #A970FF;
-    --couleur-secondaire-claire: #C4A7F5;
+    --couleur-secondaire-claire: #a87cff;
     --couleur-texte: #F2EFF7;
     --couleur-texte-secondaire: #C5C0CE;
     --couleur-carte: #19171D;
     --couleur-bordure: #39313F;
+
+    /* Texte posé sur un fond violet (header, boutons) :
+       sombre en mode sombre, blanc en mode clair, pour rester lisible */
+    --couleur-sur-secondaire: #121212;
+
+    /* Hauteur du header, utilisée pour les décalages au scroll */
+    --hauteur-entete: 80px;
+
+    --fond-image: url("../Media/fond-horizontal-noir.png");
 }
 
-/* ===== Palette du mode clair ===== */
-
+/* Palette du mode clair (la classe est ajoutée au body par le JS) */
 body.mode-clair {
     --couleur-principale: #F6F3FA;
     --couleur-secondaire: #7546A8;
@@ -50,19 +41,13 @@ body.mode-clair {
     --couleur-texte-secondaire: #625A6B;
     --couleur-carte: #FFFFFF;
     --couleur-bordure: #DED5E8;
-    background-image: url("../Media/fond-horizontal-blanc.png");
-}
+    --couleur-sur-secondaire: #ffffff;
 
+    --fond-image: url("../Media/fond-horizontal-blanc.png");
+}
 
 
 /* ===== Fond géométrique ===== */
-:root {
-    --fond-image: url("../Media/fond-horizontal-noir.png");
-}
-
-body.mode-clair {
-    --fond-image: url("../Media/fond-horizontal-blanc.png");
-}
 
 body {
     background-image: var(--fond-image);
@@ -72,6 +57,7 @@ body {
     background-attachment: fixed;
 }
 
+/* En portrait (téléphone, tablette verticale) on passe sur les images verticales */
 @media (orientation: portrait) {
     :root {
         --fond-image: url("../Media/fond-vertical-noir.png");
@@ -86,6 +72,8 @@ body {
         background-attachment: scroll; /* fixed est mal géré sur iOS */
     }
 }
+
+
 /* ===== Général ===== */
 
 html {
@@ -100,41 +88,63 @@ body {
     transition: background-color 0.25s, color 0.25s;
 }
 
+/* Quand on clique sur un lien du menu, la section s'arrête sous le header */
+section {
+    scroll-margin-top: var(--hauteur-entete);
+}
+
 
 /* ===== Navigation ===== */
 
+/* Le z-index est ce qui corrigeait le bug : sans lui, les sections en
+   position relative/absolute (comme « à propos ») passaient par-dessus le header */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 900;
 }
 
 .enTete {
     display: flex;
-    justify-content: space-between;  /* sépare les éléments */
+    justify-content: space-between;  /* logo à gauche, liens à droite */
     align-items: center;
 
     padding: 15px 40px;
     box-sizing: border-box;
 
     background-color: var(--couleur-secondaire);
+    box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
 }
-
-section {
-    scroll-margin-top: 80px;
-}
-
 
 /* Logo */
 
 .logo {
-    color: var(--couleur-texte);
+    /* flex : centre le contenu (image ou texte) dans la boîte de 50px,
+       sans ça il y a un petit décalage vertical par rapport aux liens */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+
+    color: var(--couleur-sur-secondaire);
     text-decoration: none;
     font-size: 24px;
     font-weight: bold;
 }
 
+/* Si le logo est une image dans un lien, elle remplit la boîte */
+.logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 
 /* Liens */
 
@@ -144,7 +154,7 @@ section {
 }
 
 .navigation a {
-    color: var(--couleur-texte);
+    color: var(--couleur-sur-secondaire);
     text-decoration: none;
 }
 
@@ -152,10 +162,12 @@ section {
     text-decoration: underline;
 }
 
+
 /* ===== Accueil ===== */
 
 #accueil {
-    min-height: 100vh;  /* pour que l'accueil prenne toute la page */
+    min-height: 100vh;  /* l'accueil prend tout l'écran */
+    min-height: 100svh; /* version mobile : ne compte pas la barre d'adresse */
 
     display: flex;
     justify-content: center;
@@ -173,20 +185,21 @@ section {
     margin: 0 0 10px;
 
     font-size: 18px;
-    color: #8f9aa3;
+    color: var(--couleur-texte-secondaire);
 }
 
 .accueil-contenu h1 {
     margin: 0;
 
-    font-size: 72px;
+    /* la taille s'adapte à la largeur de l'écran, entre 42px et 72px */
+    font-size: clamp(42px, 8vw, 72px);
     line-height: 1;
 }
 
 .accueil-contenu h2 {
     margin: 20px 0;
 
-    font-size: 24px;
+    font-size: clamp(20px, 3vw, 24px);
     font-weight: normal;
     color: var(--couleur-secondaire);
 }
@@ -203,6 +216,7 @@ section {
 .accueil-boutons {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap; /* les boutons passent à la ligne si pas assez de place */
     gap: 15px;
 
     margin-top: 35px;
@@ -221,7 +235,7 @@ section {
 
 .bouton-principal {
     background-color: var(--couleur-secondaire);
-    color: var(--couleur-texte);
+    color: var(--couleur-sur-secondaire);
 }
 
 .bouton-principal:hover {
@@ -236,9 +250,9 @@ section {
 
 .bouton-secondaire:hover {
     background-color: var(--couleur-secondaire);
+    color: var(--couleur-sur-secondaire);
     transform: translateY(-2px);
 }
-
 
 
 /* ===== À propos ===== */
@@ -248,14 +262,11 @@ section {
     min-height: 80vh;
     padding: 100px 40px;
     box-sizing: border-box;
-    scroll-margin-top: 80px;
 }
 
-/*
-   Le conteneur complet reste centré dans la page.
-   La photo est positionnée indépendamment pour qu'elle ne décale
-   jamais le titre ni les onglets.
-*/
+/* Le bloc de texte reste centré dans la page.
+   La photo est posée en absolu à côté, comme ça elle ne décale
+   ni le titre ni les onglets. */
 .profil-contenu {
     width: 100%;
     max-width: 1000px;
@@ -277,7 +288,7 @@ section {
 
 .profil-contenu h2 {
     margin: 0 0 30px;
-    font-size: 40px;
+    font-size: clamp(28px, 5vw, 40px);
 }
 
 .profil-contenu p:not(.section-surtitre) {
@@ -287,12 +298,16 @@ section {
     margin-bottom: 20px;
 }
 
-/* Photo du profil : affichée uniquement dans l'onglet « Moi » */
+/* Photo de profil : visible seulement dans l'onglet « Moi » */
 .profil-image {
+    /* Plus la valeur est négative, plus la photo monte
+       (c'était -10%, -50% la centrerait pile au milieu de la section) */
+    --decalage-photo: -30%;
+
     position: absolute;
     top: 50%;
     right: max(40px, calc((100% - 1000px) / 2));
-    transform: translateY(-10%);
+    transform: translateY(var(--decalage-photo));
 }
 
 .profil-image img {
@@ -336,6 +351,7 @@ section {
     color: var(--couleur-secondaire);
 }
 
+/* Le petit trait sous l'onglet actif */
 .profil-onglet.actif::after {
     content: "";
     position: absolute;
@@ -357,13 +373,13 @@ section {
     animation: apparition-onglet 0.2s ease;
 }
 
-/* Dans « Moi », on réserve la place de la photo au texte.
-   Les titres et onglets restent centrés sur toute la section. */
+/* Dans « Moi », on laisse la place de la photo au texte.
+   Les titres et les onglets restent centrés sur toute la largeur. */
 #a-propos:not(.sans-photo) #contenu-moi {
     max-width: calc(100% - 360px);
 }
 
-/* Les autres onglets utilisent toute la largeur disponible. */
+/* Les autres onglets prennent toute la largeur */
 #a-propos.sans-photo #contenu-formation,
 #a-propos.sans-photo #contenu-engagements,
 #a-propos.sans-photo #contenu-certifications {
@@ -371,6 +387,7 @@ section {
     margin-inline: auto;
 }
 
+/* Petite animation quand on change d'onglet (utilisée aussi plus bas) */
 @keyframes apparition-onglet {
     from {
         opacity: 0;
@@ -380,6 +397,27 @@ section {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Contenu des onglets */
+.profil-panneau {
+    animation: apparition-onglet 0.2s ease;
+}
+
+.profil-panneau[hidden] {
+    display: none;
+}
+
+.profil-panneau p {
+    color: var(--couleur-texte-secondaire);
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.profil-panneau h3 {
+    color: var(--couleur-texte);
+    margin-top: 0;
 }
 
 
@@ -406,14 +444,15 @@ section {
 .parcours-date {
     margin: 0 0 6px;
 
-    color: #5a949b;
+    color: var(--couleur-secondaire);
     font-size: 14px;
 }
 
 .parcours-etablissement {
-    color: #aeb8bd;
+    color: var(--couleur-texte-secondaire);
     font-size: 15px;
 }
+
 
 /* ===== Certification ===== */
 
@@ -425,35 +464,36 @@ section {
     padding: 25px;
 
     background-color: var(--couleur-carte);
-    border: 1px solid #252525;
+    border: 1px solid var(--couleur-bordure);
     border-radius: 12px;
 }
 
 .certification-icone {
     flex-shrink: 0;
 
-    color: #5a949b;
+    color: var(--couleur-secondaire);
     font-size: 42px;
 }
 
 .certification-infos {
     flex: 1;
+    min-width: 0;
 }
 
 .certification-infos p {
-    color: #c5c5c5;
+    color: var(--couleur-texte-secondaire);
     line-height: 1.7;
 }
 
 .certification-score strong {
-    color: #5a949b;
+    color: var(--couleur-secondaire);
 }
 
 .certification-lien {
     display: inline-block;
     margin-top: 10px;
 
-    color: #5a949b;
+    color: var(--couleur-secondaire);
     text-decoration: none;
     font-weight: bold;
 }
@@ -461,42 +501,6 @@ section {
 .certification-lien:hover {
     text-decoration: underline;
 }
-
-
-/* ===== Contenu des onglets ===== */
-
-.profil-panneau {
-    animation: apparition-onglet 0.2s ease;
-}
-
-.profil-panneau[hidden] {
-    display: none;
-}
-
-.profil-panneau p {
-    color: var(--couleur-texte-secondaire);
-    font-size: 17px;
-    line-height: 1.7;
-    margin-bottom: 20px;
-}
-
-.profil-panneau h3 {
-    color: var(--couleur-texte);
-    margin-top: 0;
-}
-
-@keyframes apparition-onglet {
-    from {
-        opacity: 0;
-        transform: translateY(5px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 
 
 /* ===== Compétences ===== */
@@ -523,26 +527,24 @@ section {
 .competences-contenu h2 {
     margin: 0 0 50px;
 
-    font-size: 40px;
+    font-size: clamp(28px, 5vw, 40px);
 }
 
 .competences-contenu h3 {
     margin: 0 0 25px;
 
-    font-size: 28px;
+    font-size: clamp(22px, 4vw, 28px);
 }
 
 .competences-contenu h4 {
     margin: 0 0 20px;
 
-    color: #aeb8bd;
+    color: var(--couleur-texte-secondaire);
     font-size: 20px;
     font-weight: normal;
 }
 
-
-/* ===== Organisation des compétences ===== */
-
+/* Les groupes de compétences, côte à côte sur PC */
 .competences-sous-categories {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -564,13 +566,12 @@ section {
 
 .competence-groupe h4 {
     margin: 0 0 20px;
-    color: #aeb8bd;
+    color: var(--couleur-texte-secondaire);
     font-size: 20px;
     font-weight: normal;
 }
 
 /* Cartes plus compactes à l'intérieur des groupes */
-
 .competence-groupe .competences-cartes {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
@@ -588,14 +589,10 @@ section {
     font-size: 15px;
 }
 
-
-/* ===== Cartes de compétences ===== */
-
+/* Cartes de compétences */
 .competences-cartes {
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
-
     gap: 20px;
 }
 
@@ -625,22 +622,16 @@ section {
     font-size: 50px;
 }
 
-.competence-carte:hover i { /* avec le i, ça veut dire "Quand A est survolé, applique ceci à B." (merci l'ia) */
+/* "A:hover i" = quand on survole la carte, on change la couleur de l'icône dedans */
+.competence-carte:hover i {
     color: var(--couleur-secondaire);
 }
-
 
 .competence-carte p {
     margin: 15px 0 0;
 
     font-size: 17px;
 }
-
-.logo {
-    height: 50px;
-    width: 50px;
-}
-
 
 
 /* ===== Projets ===== */
@@ -658,7 +649,7 @@ section {
 
 .projets-contenu h2 {
     margin: 0 0 50px;
-    font-size: 40px;
+    font-size: clamp(28px, 5vw, 40px);
 }
 
 .projets-cartes {
@@ -716,10 +707,10 @@ section {
 }
 
 .projet-informations .bouton {
-    margin-top: auto; /* place le bouton en bas */
+    margin-top: auto; /* pousse le bouton en bas de la carte */
 }
 
-/* ===== Onglets des projets ===== */
+/* Onglets des projets */
 
 .projets-onglets {
     display: flex;
@@ -771,8 +762,7 @@ section {
     outline-offset: 5px;
 }
 
-
-/* ===== Panneaux des projets ===== */
+/* Panneaux des projets */
 
 .projets-panel[hidden] {
     display: none !important;
@@ -794,8 +784,7 @@ section {
     }
 }
 
-
-/* ===== Cartes des projets scolaires ===== */
+/* Cartes des projets scolaires */
 
 .projets-scolaires-cartes {
     display: grid;
@@ -879,34 +868,6 @@ section {
 }
 
 
-/* ===== Adaptation des projets aux écrans plus petits ===== */
-
-@media (max-width: 900px) {
-    .projets-scolaires-cartes {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 650px) {
-    .projets-onglets {
-        gap: 18px;
-    }
-
-    .projets-onglet {
-        font-size: 16px;
-    }
-
-    .projet-scolaire-carte {
-        gap: 15px;
-        padding: 20px;
-    }
-
-    .projet-scolaire-icone {
-        font-size: 30px;
-    }
-}
-
-
 /* ===== Contact ===== */
 
 #contact {
@@ -922,7 +883,7 @@ section {
 
 .contact-contenu h2 {
     margin: 0 0 20px;
-    font-size: 40px;
+    font-size: clamp(28px, 5vw, 40px);
 }
 
 .contact-description {
@@ -994,6 +955,7 @@ section {
     font-weight: bold;
 }
 
+
 /* ===== Pied de page ===== */
 
 .pied-page {
@@ -1040,115 +1002,11 @@ section {
     font-size: 14px;
 }
 
-/* ===== Adaptation aux écrans plus petits ===== */
-
-@media (max-width: 900px) {
-    #a-propos {
-        padding-inline: 25px;
-    }
-
-    .profil-image {
-        right: 25px;
-    }
-
-    .profil-image img {
-        width: 230px;
-        height: 230px;
-    }
-
-    #a-propos:not(.sans-photo) #contenu-moi {
-        max-width: calc(100% - 270px);
-    }
-
-    .competences-sous-categories,
-    .projets-cartes {
-        grid-template-columns: 1fr;
-    }
-
-    .competence-groupe .competences-cartes {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 650px) {
-    .enTete {
-        padding: 12px 18px;
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-
-    .navigation {
-        gap: 14px;
-        flex-wrap: wrap;
-    }
-
-    #accueil,
-    #a-propos,
-    #competences,
-    #projets,
-    #contact {
-        padding: 90px 20px 60px;
-    }
-
-    .accueil-contenu h1 {
-        font-size: clamp(42px, 12vw, 64px);
-    }
-
-    .profil-image {
-        position: static;
-        transform: none;
-        margin: 25px auto 0;
-        text-align: center;
-    }
-
-    .profil-image img {
-        width: min(250px, 80vw);
-        height: min(250px, 80vw);
-        margin-inline: auto;
-    }
-
-    #a-propos:not(.sans-photo) #contenu-moi {
-        max-width: 100%;
-    }
-
-    .profil-onglets {
-        gap: 16px;
-    }
-
-    .profil-onglet {
-        font-size: 16px;
-    }
-
-    .profil-contenu h2,
-    .competences-contenu h2,
-    .projets-contenu h2,
-    .contact-contenu h2 {
-        font-size: 32px;
-    }
-
-    .competences-sous-categories,
-    .contact-cartes {
-        grid-template-columns: 1fr;
-    }
-
-    .competence-groupe .competences-cartes,
-    .competences-cartes {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .certification-carte {
-        gap: 15px;
-        padding: 20px;
-    }
-
-    .pied-page-navigation {
-        gap: 16px;
-    }
-}
-
 
 /* ===== Boutons flottants : langue et thème ===== */
 
+/* Le conteneur couvre le bas de l'écran mais ne bloque pas les clics
+   (pointer-events: none), seuls les boutons sont cliquables */
 .boutons-flottants {
     position: fixed;
     bottom: 20px;
@@ -1157,7 +1015,7 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
+    z-index: 1000; /* au-dessus du header */
     pointer-events: none;
 }
 
@@ -1197,14 +1055,196 @@ section {
     outline: 2px solid var(--couleur-secondaire);
     outline-offset: 3px;
 }
-/*
-@media (max-width: 650px) {
-    body {
-        background-size: auto 100vh;
-        background-position: center top;
-        background-attachment: fixed;
+
+
+/* =====================================================
+   Adaptation aux différents écrans
+   (tout ce qui suit écrase ce qui est au-dessus)
+   ===================================================== */
+
+/* ----- Tablette et petits PC (900px et moins) ----- */
+
+@media (max-width: 900px) {
+    #a-propos {
+        padding-inline: 25px;
     }
-    
+
+    /* photo plus petite, et le texte de « Moi » lui laisse moins de place */
+    .profil-image {
+        right: 25px;
+    }
+
+    .profil-image img {
+        width: 230px;
+        height: 230px;
+    }
+
+    #a-propos:not(.sans-photo) #contenu-moi {
+        max-width: calc(100% - 270px);
+    }
+
+    /* tout passe sur une seule colonne */
+    .competences-sous-categories,
+    .projets-cartes,
+    .projets-scolaires-cartes {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ----- Mobile (650px et moins) ----- */
+
+@media (max-width: 650px) {
+
+    /* Le header passe sur deux lignes (logo puis liens),
+       donc on augmente sa hauteur de référence */
+    :root {
+        --hauteur-entete: 100px;
+    }
+
+    .enTete {
+        flex-direction: column;
+        gap: 8px;
+        padding: 10px 18px;
+    }
+
+    .logo {
+        height: 40px;
+        width: 40px;
+    }
+
+    .navigation {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 16px;
+        font-size: 15px;
+    }
+
+    /* Sections beaucoup plus serrées : on enlève les hauteurs minimales
+       (80vh) qui créaient les grands vides, et on réduit le padding haut/bas */
+    #accueil,
+    #a-propos,
+    #competences,
+    #projets,
+    #contact {
+        min-height: 0;
+        padding: 32px 20px;
+    }
+
+    /* L'accueil n'est plus plein écran : il prend juste la place de son
+       contenu, avec un padding en haut pour ne pas passer sous le header
+       (remets min-height: 100svh si tu veux le plein écran) */
+    #accueil {
+        padding-top: calc(var(--hauteur-entete) + 24px);
+    }
+
+    .accueil-description {
+        font-size: 16px;
+    }
+
+    /* boutons de l'accueil l'un sous l'autre, faciles à toucher */
+    .accueil-boutons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .bouton {
+        padding: 14px 24px;
+    }
+
+    /* À propos : la photo passe sous le texte au lieu d'être à côté */
+    /* Sur mobile la photo n'est plus en position absolue : elle suit le texte
+       dans la page, donc --decalage-photo ne joue pas ici. Pour la remonter,
+       on réduit l'espace entre le dernier paragraphe et elle. */
+    .profil-image {
+        position: static;
+        transform: none;
+        margin: 8px auto 0;
+        text-align: center;
+    }
+
+    /* le dernier élément de chaque onglet n'a plus sa marge du bas */
+    .profil-contenu .profil-panel > :last-child,
+    .profil-contenu .profil-panneau > :last-child {
+        margin-bottom: 0;
+    }
+
+    .profil-image img {
+        width: min(250px, 80vw);
+        height: min(250px, 80vw);
+        margin-inline: auto;
+    }
+
+    #a-propos:not(.sans-photo) #contenu-moi {
+        max-width: 100%;
+    }
+
+    .profil-panel {
+        min-height: 0;
+    }
+
+    .profil-onglets,
+    .projets-onglets {
+        gap: 16px;
+        margin: 25px 0 20px;
+    }
+
+    .profil-onglet,
+    .projets-onglet {
+        font-size: 16px;
+    }
+
+    .certification-carte {
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .certification-icone {
+        font-size: 32px;
+    }
+
+    .projet-scolaire-carte {
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .projet-scolaire-icone {
+        font-size: 30px;
+    }
+
+    .projet-informations {
+        padding: 20px;
+    }
+
+    .competences-contenu h2,
+    .projets-contenu h2 {
+        margin-bottom: 35px;
+    }
+
+    .competence-groupe {
+        padding: 20px;
+    }
+
+    /* cartes de compétences : 2 par ligne */
+    .competence-groupe .competences-cartes,
+    .competences-cartes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .contact-cartes {
+        grid-template-columns: 1fr;
+    }
+
+    .pied-page-navigation {
+        gap: 16px;
+    }
+
+    /* on laisse de la place en bas pour que les boutons flottants
+       ne cachent pas le texte du pied de page */
+    .pied-page {
+        padding-bottom: 85px;
+    }
+
     .boutons-flottants {
         bottom: 12px;
         left: 12px;
@@ -1215,20 +1255,75 @@ section {
         min-width: 44px;
         height: 44px;
     }
+
+    .contact-description {
+        margin-bottom: 30px;
+    }
+
+    /* Zones de toucher agrandies : l'apparence ne change pas, mais la zone
+       cliquable dépasse de quelques pixels autour de chaque élément grâce
+       à un pseudo-élément invisible. J'utilise ::before parce que les
+       onglets utilisent déjà ::after pour leur soulignement. */
+    .navigation a,
+    .bouton,
+    .profil-onglet,
+    .projets-onglet,
+    .certification-lien,
+    .projet-scolaire-lien,
+    .pied-page-navigation a,
+    .pied-page-logo,
+    .boutons-flottants button {
+        position: relative;
+    }
+
+    .navigation a::before,
+    .bouton::before,
+    .profil-onglet::before,
+    .projets-onglet::before,
+    .certification-lien::before,
+    .projet-scolaire-lien::before,
+    .pied-page-navigation a::before,
+    .pied-page-logo::before {
+        content: "";
+        position: absolute;
+        inset: -10px -6px; /* haut/bas puis gauche/droite */
+    }
+
+    /* un peu moins pour les boutons flottants, ils sont déjà assez gros */
+    .boutons-flottants button::before {
+        content: "";
+        position: absolute;
+        inset: -4px;
+    }
 }
 
- ===== Fond géométrique sur mobile ===== 
 
-@media screen and (max-width: 650px) {
-    body {
-        background-image: url("../Media/fond-vertical-noir.png");
-        background-size: 100% auto;
-        background-position: top center;
-        background-repeat: repeat-y;
-        background-attachment: scroll;
+/* ----- Écrans tactiles ----- */
+
+/* Sur téléphone il n'y a pas de vrai survol : sans ça, les cartes
+   restent « soulevées » après un tap */
+@media (hover: none) {
+    .bouton-principal:hover,
+    .bouton-secondaire:hover,
+    .competence-carte:hover,
+    .projet-carte:hover,
+    .projet-scolaire-carte:hover,
+    .contact-carte:hover,
+    .boutons-flottants button:hover {
+        transform: none;
+    }
+}
+
+
+/* ----- Utilisateurs qui préfèrent moins d'animations ----- */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
     }
 
-    body.mode-clair {
-        background-image: url("../Media/fond-vertical-blanc.png");
+    * {
+        animation: none !important;
+        transition: none !important;
     }
-}*/
+}
